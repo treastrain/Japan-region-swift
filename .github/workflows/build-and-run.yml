@@ -1,0 +1,23 @@
+name: Build and Run
+
+on:
+  push:
+    branches: [ "renewal-develop" ]
+  pull_request:
+    branches: [ "renewal-develop" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: macos-15
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build
+      run: swift build -v
+    - name: Run
+      run: swift run -v
+    - uses: actions/upload-artifact@v4
+      with:
+        path: Build/**

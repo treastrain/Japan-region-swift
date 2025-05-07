@@ -9,10 +9,14 @@ on:
 
 jobs:
   build:
-
     runs-on: macos-15
-
     steps:
+    - name: Show Xcode version
+      run: sudo xcode-select -p
+    - name: Show Swift version
+      run: swift --version
+    - name: Show Swift Package Manager version
+      run: swift package --version
     - uses: actions/checkout@v4
     - name: Build
       run: swift build -v
